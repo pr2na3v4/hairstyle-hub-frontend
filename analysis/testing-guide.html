@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HairstyleHub - Face Analysis Testing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .option-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #333;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .comparison {
+            margin: 1rem 0;
+        }
+
+        .comparison table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison th,
+        .comparison td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .comparison th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .comparison tr:hover {
+            background: #f9fafb;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            color: #0c4a6e;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            color: #166534;
+        }
+
+        .warning-box {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 HairstyleHub Face Analysis</h1>
+            <p>Frontend Integration - Testing & Documentation</p>
+        </div>
+
+        <div class="options">
+            <div class="option-card" onclick="openModal('live-demo')">
+                <div class="option-icon">🚀</div>
+                <h3>Live Demo</h3>
+                <p>Test the actual face analysis interface with your browser</p>
+                <button class="btn">Open Demo</button>
+            </div>
+
+            <div class="option-card" onclick="openModal('features')">
+                <div class="option-icon">✨</div>
+                <h3>Features</h3>
+                <p>Complete list of all capabilities and functionality</p>
+                <button class="btn">View Features</button>
+            </div>
+
+            <div class="option-card" onclick="openModal('api')">
+                <div class="option-icon">🔌</div>
+                <h3>API Documentation</h3>
+                <p>Expected request/response formats for backend integration</p>
+                <button class="btn">API Docs</button>
+            </div>
+
+            <div class="option-card" onclick="openModal('installation')">
+                <div class="option-icon">⚙️</div>
+                <h3>Installation</h3>
+                <p>Step-by-step setup and configuration guide</p>
+                <button class="btn">Setup Guide</button>
+            </div>
+
+            <div class="option-card" onclick="openModal('testing')">
+                <div class="option-icon">🧪</div>
+                <h3>Testing Guide</h3>
+                <p>How to test with mock data and debug issues</p>
+                <button class="btn">Testing Tips</button>
+            </div>
+
+            <div class="option-card" onclick="openModal('deployment')">
+                <div class="option-icon">🚢</div>
+                <h3>Deployment</h3>
+                <p>Production deployment checklist and best practices</p>
+                <button class="btn">Deploy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+
+    <!-- Live Demo Modal -->
+    <div id="live-demo" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Live Demo</h2>
+                <button class="close-btn" onclick="closeModal('live-demo')">&times;</button>
+            </div>
+            <div class="success-box">
+                ✓ Demo mode ready with mock data (no backend required)
+            </div>
+            <p>Click the button below to open the actual face analysis interface:</p>
+            <a href="analysis.html" style="display: inline-block; margin-top: 1rem;">
+                <button class="btn">Open Face Analysis Interface →</button>
+            </a>
+            <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                <strong>Note:</strong> In development mode, this will use mock API responses. 
+                To use the real API, update the endpoint URL in <code>analysis.js</code>.
+            </p>
+        </div>
+    </div>
+
+    <!-- Features Modal -->
+    <div id="features" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Features</h2>
+                <button class="close-btn" onclick="closeModal('features')">&times;</button>
+            </div>
+
+            <h3>Image Input Methods</h3>
+            <ul class="feature-list">
+                <li>Drag & drop file upload</li>
+                <li>Click to select photo from device</li>
+                <li>Real-time webcam capture</li>
+                <li>Image preview before analysis</li>
+                <li>Support for JPEG and PNG formats</li>
+                <li>Max file size 10MB with validation</li>
+            </ul>
+
+            <h3>Analysis Results</h3>
+            <ul class="feature-list">
+                <li>Face shape detection (7 types)</li>
+                <li>Confidence percentage (0-100%)</li>
+                <li>Optional facial measurements</li>
+                <li>3-5 personalized hairstyle recommendations</li>
+                <li>Match scores for each recommendation</li>
+                <li>Detailed hairstyle information</li>
+            </ul>
+
+            <h3>User Experience</h3>
+            <ul class="feature-list">
+                <li>Loading state with progress animation</li>
+                <li>Detailed error messages with suggestions</li>
+                <li>Mobile-responsive design (all devices)</li>
+                <li>Fast performance (&lt;5s typical)</li>
+                <li>Share results functionality</li>
+                <li>Privacy notice displayed prominently</li>
+            </ul>
+
+            <h3>Error Handling</h3>
+            <ul class="feature-list">
+                <li>No face detected - helpful message</li>
+                <li>Poor image quality - suggestion to improve</li>
+                <li>File too large - size requirement shown</li>
+                <li>Network errors - automatic retry logic</li>
+                <li>API errors - user-friendly explanations</li>
+                <li>Browser compatibility checks</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- API Documentation Modal -->
+    <div id="api" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>API Documentation</h2>
+                <button class="close-btn" onclick="closeModal('api')">&times;</button>
+            </div>
+
+            <h3>Endpoint</h3>
+            <div class="code-block">POST /api/v1/analyze-and-recommend</div>
+
+            <h3>Request Format</h3>
+            <p><strong>Content-Type:</strong> multipart/form-data</p>
+            <p><strong>Field:</strong> image (JPEG or PNG file)</p>
+
+            <h3>Response Format</h3>
+            <div class="code-block">{
+  "face_shape": "oval",
+  "confidence": 0.95,
+  "measurements": {
+    "width": 145.5,
+    "height": 195.3,
+    "forehead_width": 130.2,
+    "jaw_width": 125.8
+  },
+  "recommendations": [
+    {
+      "name": "Layered Bob",
+      "description": "Classic layered bob",
+      "match_score": 0.92,
+      "image_url": "https://...",
+      "tags": ["Trendy", "Easy"]
+    }
+  ]
+}</div>
+
+            <h3>Error Response Examples</h3>
+            <p><strong>No Face Detected (400):</strong></p>
+            <div class="code-block">{
+  "error": "No face detected",
+  "message": "Could not detect a face..."
+}</div>
+
+            <p><strong>Server Error (500):</strong></p>
+            <div class="code-block">{
+  "error": "Internal server error",
+  "message": "An unexpected error occurred..."
+}</div>
+
+            <div class="info-box">
+                See <code>api-examples.js</code> for complete implementation examples
+            </div>
+        </div>
+    </div>
+
+    <!-- Installation Modal -->
+    <div id="installation" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Installation & Setup</h2>
+                <button class="close-btn" onclick="closeModal('installation')">&times;</button>
+            </div>
+
+            <h3>Step 1: File Placement</h3>
+            <p>Files are already in the correct location:</p>
+            <div class="code-block">frontend/
+└── analysis/
+    ├── analysis.html
+    ├── analysis.js
+    ├── analysis.css
+    └── README.md</div>
+
+            <h3>Step 2: Configure API Endpoint</h3>
+            <p>Edit <code>analysis.js</code> (line 1-3):</p>
+            <div class="code-block">const API_BASE_URL = 'https://your-api-url.com';</div>
+
+            <h3>Step 3: Add Navigation Link</h3>
+            <div class="code-block">&lt;a href="analysis/analysis.html"&gt;
+  Find Your Hairstyle
+&lt;/a&gt;</div>
+
+            <h3>Step 4: Test</h3>
+            <ol style="margin-left: 1.5rem; color: #333;">
+                <li>Open analysis.html in browser</li>
+                <li>Try uploading a photo or using webcam</li>
+                <li>Check browser console for any errors</li>
+                <li>Verify API endpoint is accessible</li>
+            </ol>
+
+            <div class="success-box">
+                ✓ You're ready! The system is now accessible from your frontend.
+            </div>
+        </div>
+    </div>
+
+    <!-- Testing Modal -->
+    <div id="testing" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Testing Guide</h2>
+                <button class="close-btn" onclick="closeModal('testing')">&times;</button>
+            </div>
+
+            <h3>Test with Mock API</h3>
+            <p>For development without a backend, use the mock API:</p>
+            <div class="code-block">const api = new MockHairstyleHubAPI();
+// Works like real API but returns mock data</div>
+
+            <h3>Browser DevTools</h3>
+            <p>Press <strong>F12</strong> to open Developer Tools:</p>
+            <ol style="margin-left: 1.5rem; color: #333;">
+                <li><strong>Console Tab:</strong> Check for JavaScript errors</li>
+                <li><strong>Network Tab:</strong> Monitor API requests</li>
+                <li><strong>Elements Tab:</strong> Inspect HTML/CSS</li>
+                <li><strong>Application Tab:</strong> Check localStorage</li>
+            </ol>
+
+            <h3>Test Cases</h3>
+            <div class="comparison">
+                <table>
+                    <tr>
+                        <th>Test</th>
+                        <th>Expected Result</th>
+                    </tr>
+                    <tr>
+                        <td>Upload image</td>
+                        <td>Preview shows, Analyze button active</td>
+                    </tr>
+                    <tr>
+                        <td>Click webcam</td>
+                        <td>Modal opens, camera feed starts</td>
+                    </tr>
+                    <tr>
+                        <td>Capture photo</td>
+                        <td>Preview shows captured image</td>
+                    </tr>
+                    <tr>
+                        <td>Click Analyze</td>
+                        <td>Loading spinner, then results</td>
+                    </tr>
+                    <tr>
+                        <td>View details</td>
+                        <td>Modal shows hairstyle details</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>Common Issues</h3>
+            <p><strong>Webcam not working?</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Check HTTPS (required in production)</li>
+                <li>Verify browser permissions</li>
+                <li>Try different browser</li>
+            </ul>
+
+            <p><strong>API not responding?</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Check endpoint URL in analysis.js</li>
+                <li>Verify backend is running</li>
+                <li>Check CORS headers</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Deployment Modal -->
+    <div id="deployment" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Deployment Checklist</h2>
+                <button class="close-btn" onclick="closeModal('deployment')">&times;</button>
+            </div>
+
+            <h3>Before Deployment</h3>
+            <div style="margin: 1rem 0;">
+                <label style="display: flex; align-items: center; margin-bottom: 0.75rem; cursor: pointer;">
+                    <input type="checkbox" style="margin-right: 0.75rem;">
+                    Update API endpoint URL to production
+                </label>
+                <label style="display: flex; align-items: center; margin-bottom: 0.75rem; cursor: pointer;">
+                    <input type="checkbox" style="margin-right: 0.75rem;">
+                    Enable HTTPS for webcam support
+                </label>
+                <label style="display: flex; align-items: center; margin-bottom: 0.75rem; cursor: pointer;">
+                    <input type="checkbox" style="margin-right: 0.75rem;">
+                    Test on mobile devices
+                </label>
+                <label style="display: flex; align-items: center; margin-bottom: 0.75rem; cursor: pointer;">
+                    <input type="checkbox" style="margin-right: 0.75rem;">
+                    Verify all error cases
+                </label>
+                <label style="display: flex; align-items: center; margin-bottom: 0.75rem; cursor: pointer;">
+                    <input type="checkbox" style="margin-right: 0.75rem;">
+                    Test on slow networks
+                </label>
+                <label style="display: flex; align-items: center; margin-bottom: 0.75rem; cursor: pointer;">
+                    <input type="checkbox" style="margin-right: 0.75rem;">
+                    Check console for warnings
+                </label>
+                <label style="display: flex; align-items: center; margin-bottom: 0.75rem; cursor: pointer;">
+                    <input type="checkbox" style="margin-right: 0.75rem;">
+                    Optimize image loading
+                </label>
+                <label style="display: flex; align-items: center; margin-bottom: 0.75rem; cursor: pointer;">
+                    <input type="checkbox" style="margin-right: 0.75rem;">
+                    Setup monitoring/error tracking
+                </label>
+            </div>
+
+            <h3>Performance Tips</h3>
+            <ul style="margin-left: 1.5rem; color: #333;">
+                <li>Minify CSS and JavaScript</li>
+                <li>Enable gzip compression</li>
+                <li>Use CDN for image hosting</li>
+                <li>Optimize image sizes</li>
+                <li>Cache static assets</li>
+            </ul>
+
+            <h3>Security Best Practices</h3>
+            <ul style="margin-left: 1.5rem; color: #333;">
+                <li>Use HTTPS only</li>
+                <li>Validate file uploads on backend</li>
+                <li>Implement rate limiting</li>
+                <li>Set appropriate CORS headers</li>
+                <li>Use environment variables for secrets</li>
+            </ul>
+
+            <div class="success-box">
+                ✓ Ready for production! Monitor performance and user feedback.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

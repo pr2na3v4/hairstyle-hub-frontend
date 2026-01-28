@@ -1,0 +1,273 @@
+/* ==========================================================================
+   1. SEARCH BOX STYLING
+   ========================================================================== */
+.search-box {
+    position: relative;
+    max-width: 600px;
+    width: 95%; /* Mobile default */
+    margin: 20px auto 30px;
+    background: #fff;
+    border-radius: 50px;
+    padding: 10px 15px; /* Mobile default */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+/* Desktop sizing for Search Box */
+@media (min-width: 768px) {
+    .search-box {
+        width: 90%;
+        margin: 30px auto 50px;
+        padding: 12px 25px;
+        gap: 15px;
+    }
+}
+
+.search-box:focus-within {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    border-color: #ddd;
+}
+
+.search-icon {
+    color: #888;
+    font-size: 1.1rem;
+}
+
+#searchInput {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #333;
+    background: transparent;
+}
+
+/* ==========================================================================
+   2. GRID LAYOUT (Fluid Architecture)
+   ========================================================================== */
+.haircuts-grid {
+    display: grid;
+    /* Uses auto-fill to automatically adjust columns based on card width */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Mobile adjustments for Grid */
+@media (max-width: 480px) {
+    .haircuts-grid {
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
+        gap: 1.25rem;
+    }
+}
+
+/* ==========================================================================
+   3. CARD STYLING
+   ========================================================================== */
+.card {
+    margin: 10px 50 5px    ;
+    width: 100%;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 220px; /* Mobile height */
+    object-fit: cover;
+    background-color: #f0f0f0;
+    display: block;
+}
+
+/* Desktop height for images */
+@media (min-width: 768px) {
+    .card img {
+        height: 250px;
+    }
+}
+
+.card h3 {
+    font-size: 1.1rem; /* Mobile default */
+    font-weight: 700;
+    color: #2c2c2c;
+    margin: 15px 20px 5px;
+    text-transform: capitalize;
+    line-height: 1.3;
+}
+
+/* Desktop font size */
+@media (min-width: 768px) {
+    .card h3 {
+        font-size: 1.25rem;
+    }
+}
+
+.details-btn {
+    display: block;
+    margin: auto 20px 20px; /* Pushes to bottom */
+    padding: 12px; /* Easier to tap on mobile */
+    text-align: center;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+/* Desktop button adjustment */
+@media (min-width: 768px) {
+    .details-btn {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+.details-btn:hover {
+    background-color: #333;
+}
+
+/* --- FULL PAGE LOADER --- */
+#page-loader {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3a3435;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* --- SKELETON LOADER FOR HAIRCUTS --- */
+.skeleton-card {
+    width: 100%;
+    height: 300px;
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 12px;
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+    to { background-position-x: -200%; }
+}
+
+/* Skeleton loading */
+.skeleton-card {
+  background: #f0f0f0;
+  border-radius: 8px;
+  padding: 15px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-img {
+  height: 200px;
+  background: #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.skeleton-text {
+  height: 20px;
+  background: #ddd;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skeleton-btn {
+  height: 36px;
+  background: #ddd;
+  border-radius: 4px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Trending badge*/
+.trending-badge {
+
+  background: #ff4d6d;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+ 
+/* Card metadata */
+.card-meta {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+  flex-wrap: wrap;
+}
+
+.card-meta span {
+  background: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Buttons */
+.retry-btn, .reset-btn {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.retry-btn:hover, .reset-btn:hover {
+  background: #e03e5c;
+}
+
+/* Error and no results */
+.error-msg, .no-results {
+  text-align: center;
+  padding: 40px 20px;
+  grid-column: 1 / -1;
+}
+
+.error-msg h3, .no-results h3 {
+  color: #ff4d6d;
+  margin-bottom: 10px;
+}

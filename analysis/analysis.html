@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Analysis - HairstyleHub</title>
+    <link rel="stylesheet" href="analysis.css">
+    <link rel="stylesheet" href="../global.css">
+</head>
+<body>
+    <div class="analysis-container">
+        <!-- Header -->
+        <header class="analysis-header">
+            <button class="back-btn" onclick="goBack()">
+                <span>←</span> Back
+            </button>
+            <h1>Find Your Perfect Hairstyle</h1>
+            <p class="subtitle">Upload a photo or use your webcam to get personalized recommendations</p>
+        </header>
+
+        <!-- Privacy Notice -->
+        <div class="privacy-notice">
+            <svg class="privacy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <p><strong>Privacy Protected:</strong> Your photo is analyzed instantly and never stored on our servers.</p>
+        </div>
+
+        <!-- Main Content -->
+        <main class="analysis-main">
+            <!-- Upload Section -->
+            <section class="upload-section" id="uploadSection">
+                <div class="upload-options">
+                    <!-- File Upload -->
+                    <div class="upload-option">
+                        <label for="photoInput" class="upload-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"></path>
+                                <circle cx="12" cy="13" r="3"></circle>
+                                <path d="m21 5-7 7-7-7"></path>
+                            </svg>
+                            <span class="upload-text">Choose Photo</span>
+                            <span class="upload-hint">or drag and drop</span>
+                        </label>
+                        <input 
+                            type="file" 
+                            id="photoInput" 
+                            accept="image/*" 
+                            hidden
+                        >
+                    </div>
+
+                    <!-- OR Divider -->
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+
+                    <!-- Webcam Capture -->
+                    <div class="upload-option">
+                        <button class="webcam-btn" id="webcamBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 7l-7 5 7 5V7z"></path>
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                            </svg>
+                            <span>Use Webcam</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preview Image -->
+                <div id="previewContainer" class="preview-container hidden">
+                    <img id="previewImage" class="preview-image" alt="Preview">
+                    <div class="preview-actions">
+                        <button class="btn btn-secondary" onclick="retakePhoto()">
+                            <span>↻</span> Retake
+                        </button>
+                        <button class="btn btn-primary" id="analyzeBtn" onclick="analyzePhoto()">
+                            <span>✓</span> Analyze
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Webcam Modal -->
+            <div id="webcamModal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Capture Photo</h2>
+                        <button class="close-btn" onclick="closeWebcam()">&times;</button>
+                    </div>
+                    <div class="webcam-container">
+                        <video id="webcamVideo" class="webcam-video" autoplay playsinline></video>
+                        <canvas id="webcamCanvas" hidden></canvas>
+                    </div>
+                    <div class="webcam-actions">
+                        <button class="btn btn-secondary" onclick="closeWebcam()">Cancel</button>
+                        <button class="btn btn-primary" id="captureBtn" onclick="captureWebcam()">
+                            <span>📷</span> Capture
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state hidden">
+                <div class="spinner"></div>
+                <h2>Analyzing Your Face Shape...</h2>
+                <p>Please wait while we process your photo</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="error-state hidden">
+                <div class="error-icon">⚠️</div>
+                <h2 id="errorTitle">Analysis Failed</h2>
+                <p id="errorMessage"></p>
+                <button class="btn btn-primary" onclick="resetAnalysis()">Try Again</button>
+            </div>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                <!-- Face Shape Result -->
+                <div class="face-shape-card">
+                    <div class="card-header">
+                        <h2>Your Face Shape</h2>
+                    </div>
+                    <div class="face-shape-content">
+                        <div class="face-shape-badge">
+                            <div class="shape-icon" id="shapeIcon">👤</div>
+                            <div class="shape-info">
+                                <h3 id="faceShapeName">Face Shape</h3>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" id="confidenceFill"></div>
+                                </div>
+                                <p class="confidence-text"><span id="confidencePercent">0</span>% confidence</p>
+                            </div>
+                        </div>
+                        <p class="shape-description" id="shapeDescription"></p>
+                    </div>
+                </div>
+
+                <!-- Face Measurements (Optional) -->
+                <div id="measurementsCard" class="measurements-card hidden">
+                    <div class="card-header">
+                        <h2>Face Measurements</h2>
+                    </div>
+                    <div class="measurements-grid">
+                        <div class="measurement-item">
+                            <span class="measurement-label">Face Width</span>
+                            <span class="measurement-value" id="measurementWidth">-</span>
+                        </div>
+                        <div class="measurement-item">
+                            <span class="measurement-label">Face Height</span>
+                            <span class="measurement-value" id="measurementHeight">-</span>
+                        </div>
+                        <div class="measurement-item">
+                            <span class="measurement-label">Forehead Width</span>
+                            <span class="measurement-value" id="measurementForehead">-</span>
+                        </div>
+                        <div class="measurement-item">
+                            <span class="measurement-label">Jaw Width</span>
+                            <span class="measurement-value" id="measurementJaw">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommended Hairstyles -->
+                <div class="recommendations-section">
+                    <div class="card-header">
+                        <h2>Recommended Hairstyles</h2>
+                        <p class="rec-subtitle">Based on your face shape and features</p>
+                    </div>
+                    <div class="hairstyles-grid" id="hairstylesGrid">
+                        <!-- Hairstyle cards will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="results-actions">
+                    <button class="btn btn-secondary" onclick="resetAnalysis()">
+                        <span>↻</span> Analyze Another Photo
+                    </button>
+                    <button class="btn btn-secondary" onclick="shareResults()">
+                        <span>📤</span> Share Results
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Hairstyle Detail Modal -->
+    <div id="detailModal" class="modal hidden">
+        <div class="modal-content modal-detail">
+            <div class="modal-header">
+                <h2 id="detailTitle">Hairstyle Details</h2>
+                <button class="close-btn" onclick="closeDetailModal()">&times;</button>
+            </div>
+            <div class="detail-content">
+                <img id="detailImage" class="detail-image" alt="Hairstyle">
+                <div class="detail-info">
+                    <h3 id="detailName"></h3>
+                    <p class="match-score">Match Score: <span id="detailScore">0</span>%</p>
+                    <p id="detailDescription" class="description"></p>
+                    <div class="detail-tags" id="detailTags"></div>
+                    <button class="btn btn-primary" onclick="bookConsultation()">
+                        Book Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="analysis.js"></script>
+</body>
+</html>

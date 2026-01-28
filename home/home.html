@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HairStyleHub</title>
+    <link rel="icon" type="image/png" href="../asets/Logo.png">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="../details/hairdetail.css">
+<link rel="stylesheet" href="../global.css">
+</head>
+<style>
+    .viewDetailsLink {
+    display: block;
+    text-align: center;
+    margin: 12px 10px 10px 10px;
+    padding: 10px 0;
+    background: #fff;
+    color: rgb(53, 3, 3);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+/* --- SKELETON LOADER FOR HAIRCUTS --- 
+.skeleton-card {
+    width: 100%;
+    height: 300px;
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 12px;
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+    to { background-position-x: -200%; }
+}*/
+</style>
+<body>
+   
+<nav>
+    <h1>HairStyleHub</h1>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+        <li><a href="../index.html">welcome</a></li>
+        <li><a href="./home.html">Home</a></li>
+        <li><a href="../categories/categories.html">Categories</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="https://hairstylehub-bolg-1.netlify.app/"> Our Blogs for hairstyles</a></li>
+   <div class="nav-auth-container">
+        <button id="googleLoginBtn" class="login-btn" onclick="googleLogin()">
+            Login with Google
+        </button>
+
+        <div class="user-avatar" style="display: none;"></div>
+        <h4 class="user-name" style="display: none;"></h4>
+    </div>
+    </ul>
+</nav>
+
+<main>
+    <section id="top10" class="top10">
+        <div class="title"><h2>Top 10 Trending hairStyles</h2></div>
+        
+        <div class="masonry">
+        <div  id="top10Container" class="cards">
+            <!-- Dynamic content will be inserted here -->
+            <a href="/details/hairdetail.html">view</a>
+        </div>
+        </div>
+    </section>
+    <!--<section id="products" class="products">
+        <div class="title"><h2>best Products for you</h2></div>
+        <div class="product-card-container">
+            <!-- Dynamic content will be inserted here -->
+<!-- page-loader
+        </div>
+    </section>-->
+          <div id="page-loader">
+    <div class="spinner"></div>
+</div>
+   
+</div>
+    <section id="trending" class="trending">
+        <div class="title"><h2>Trending Now</h2></div>
+     
+    <div class="masonry">
+        <div id="trendingContainer" class="cards">
+          <!-- Dynamic content will be inserted here -->
+        </div>
+    </div>
+    <a href="../categories/categories.html" class="viewDetailsLink" style="font-size: 18px; width: 100%; height: 50px; background-color: #000; color: #ffff; border: 1px solid #000;">View All categories</a>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-about">
+            <h3>HairStyleHub</h3>
+            <p>Discover trending haircuts and beard styles curated for you.</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="./home/home.html">Home</a></li>
+                <li><a href="./categories/categories.html">Categories</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="https://hairstylehub-bolg-1.netlify.app/">our blogs for hairstyles</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 HairStyleHub. All rights reserved.</p>
+    </div>
+</footer>
+<script type="module" src="../js/firebase-config.js"></script>
+<script type="module" src="../js/auth.js"></script>
+<script  src="../details/hairdetail.js"></script>
+<script src="./home.js"></script>
+<script type="module" src="../main.js"></script>    
+</body>
+</html>

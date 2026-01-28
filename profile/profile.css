@@ -1,0 +1,479 @@
+/* ==========================================================================
+   PROFILE PAGE STYLING - BLACK & WHITE THEME
+   ========================================================================== */
+
+:root {
+    --bg-black: #000000;
+    --card-dark: #111111;
+    --text-white: #ffffff;
+    --text-gray: #a0a0a0;
+    --border-dim: #222222;
+    --pure-white: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.edit-textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.edit-btn { background: #3498db; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+.delete-btn { background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: 5px; }
+.save-btn { background: #2ecc71; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+.cancel-btn { background: #95a5a6; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+/* =========================================
+   LOGOUT BUTTON STYLING
+   ========================================= */
+/* =========================================
+   PROFESSIONAL OVERLAY LOADER
+   ========================================= */
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+    backdrop-filter: blur(8px); /* Modern glass effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's above everything */
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+/* The Spinner */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* Creates the partial ring effect */
+    background: conic-gradient(#0000 10%, #ffffff); 
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 6px), #000 0);
+    animation: spin 0.8s infinite linear;
+    margin: 0 auto 20px;
+}
+
+/* Edit Profile Button */
+.edit-profile-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* The Popup Background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* The Popup Box */
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.modal-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+/* Loading Text */
+.loader-text {
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* Animation */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Class to hide loader via JS */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+#logoutBtn {
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    
+    /* Dimensions & Spacing */
+    padding: 10px 24px;
+    min-width: 140px;
+    
+    /* Colors (High Contrast) */
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    
+    /* Typography */
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Interaction */
+    cursor: pointer;
+    border-radius: 50px; /* Pill shape to match search/nav */
+    transition: all 0.3s ease;
+}
+
+/* Hover State - Invert Colors */
+#logoutBtn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Active State - Subtle Press Effect */
+#logoutBtn:active {
+    transform: scale(0.96);
+}
+
+/* Optional: If using an icon inside */
+#logoutBtn i {
+    font-size: 1rem;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 480px) {
+    .logout-btn {
+        width: 100%; /* Full width on small screens */
+        padding: 12px;
+    }
+}
+/* 1. User Info Card */
+.user-info-card {
+    background: rgb(46, 44, 44);
+    border: 1px solid var(--border-dim);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#userPhoto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--pure-white);
+    margin-bottom: 20px;
+}
+
+#userName {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 10px 0 5px;
+    letter-spacing: -0.5px;
+}
+
+#userEmail {
+    color: var(--text-gray);
+    font-size: 1rem;
+}
+
+/* 2. Profile Sections (Headings) */
+.profile-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-dim);
+    padding-bottom: 15px;
+    color: #464242;
+}
+
+.profile-section h3 i {
+    font-size: 1.1rem;
+}
+
+/* 3. Liked Styles Grid */
+.grid-container {
+    display: grid;
+    /* Responsive columns */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Assuming styles are injected as cards into the grid */
+.style-card {
+    background: var(--card-dark);
+    border: 1px solid var(--border-dim);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.style-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--pure-white);
+}
+
+/* 4. Comments List */
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.comment-item {
+    background: var(--card-dark);
+    border: 1px solid var(--border-dim);
+    padding: 20px;
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.comment-item:hover {
+    background: #161616;
+}
+
+.comment-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: color(black);
+}
+
+.comment-date {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: black;
+}
+
+/* 5. Responsive Design */
+
+/* Tablet & Desktop */
+@media (min-width: 768px) {
+    .profile-container {
+        padding: 40px 0;
+    }
+    
+    .user-info-card {
+        flex-direction: row;
+        text-align: left;
+        gap: 30px;
+    }
+
+    #userPhoto {
+        margin-bottom: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on small mobile */
+        gap: 10px;
+    }
+
+    .user-info-card {
+        padding: 20px;
+    }
+}
+.card {
+    margin: 10px 50 5px    ;
+    width: 100%;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 220px; /* Mobile height */
+    object-fit: cover;
+    background-color: #f0f0f0;
+    display: block;
+}
+.card-title {
+    color: #111111;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+.view-link{
+    display: block;
+    margin: auto 20px 20px; /* Pushes to bottom */
+    padding: 12px; /* Easier to tap on mobile */
+    text-align: center;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+/* --- EMPTY STATE STYLING --- */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border: 2px dashed #ddd;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #666;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.discover-btn {
+    padding: 10px 25px;
+    background-color: #5c5656; /* Use your theme color here */
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.discover-btn:hover {
+    background-color: #444040;
+    transform: translateY(-2px);
+}
+
+.empty-statep {
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 12px;
+    border: 2px dashed  #a0a0a0;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: #888;
+}
+/* Error state (reddish tint) */
+.error-state {
+    @extend .empty-state;
+    border-color: #a0a0a0;
+    background: #2d2c2c;
+}
+
+.file-input {
+    padding: 10px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    background: #fafafa;
+}
+
+.file-input:hover {
+    border-color: #ff4d6d;
+    background: #fff0f3;
+}
+/* Profile Picture Lightbox */
+.image-lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+
+.image-lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.image-lightbox.active {
+    display: flex;
+}

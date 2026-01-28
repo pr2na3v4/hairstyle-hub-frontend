@@ -1,0 +1,1130 @@
+.rating-section {
+    margin-top: 2rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.star-rating span {
+    font-size: 30px;
+    cursor: pointer;
+    color: #999;
+    transition: 0.2s;
+}
+
+.star-rating span.active,
+.star-rating span:hover,
+.star-rating span:hover~span {
+    color: gold;
+}
+
+#commentInput {
+    width: 100%;
+    padding: 10px;
+    margin-top: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+/* Container for the Auth Section */
+#authSection {
+    background-color: #ccc;
+    padding: 10px 10px 10px 10px;
+    border-radius: 20px;
+    
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* User Profile Navigation Bar (When Logged In) */
+.user-profile-nav {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 5px 15px;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Small Circle Avatar */
+.user-avatar-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 2px solid #fff;
+}
+
+/* User Name Text */
+.user-name-sm {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    margin-right: 15px;
+}
+
+/* Button Base Styles */
+
+/* Container for the Auth Section */
+
+/* Style for the Login Button */
+.login-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.nav-auth-container{
+    opacity: 0.8;
+    transition: 0.2s;
+     display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 7px 15px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border-radius 0.3s;
+    border-radius: 20px;   
+}
+.nav-auth-container:hover {
+    border-radius: 50px;
+}
+
+/* User Avatar Styling */
+.user-avatar img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff; /* Your theme color */
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: block; /* Removes bottom whitespace */
+}
+
+.user-avatar img:hover {
+    transform: scale(1.05);
+}
+
+/* User Name Styling */
+.user-name {
+    font-size: 0.95rem;
+    color: #000;
+    font-weight: 650;
+    margin: 10px;
+    white-space: nowrap; /* Prevents name from wrapping to a new line */
+}
+
+/* Mobile Responsive adjustment */
+@media (max-width: 600px) {
+    .user-name {
+    }
+}
+
+.nav-profile-link {
+    color:#282424; /* A nice blue color */
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-profile-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.login-btn {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.navigation-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 0 10px;
+}
+
+.nav-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn:hover {
+    background-color: #555;
+}
+
+.nav-btn i {
+    font-size: 0.9em;
+}
+#commentInput {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    display: block;
+}
+
+#commentInput:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+#submitComment {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.comment-item {
+    background: #f1f1f1;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+/* ===== Haircut Details Container ===== */
+#haircutContainer {
+    max-width: 950px;
+    /* Slightly wider to accommodate side-by-side */
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
+    font-family: 'Poppins', sans-serif;
+
+    /* Layout Fix */
+    display: flex;
+    flex-direction: row;
+    /* Side by side */
+    flex-wrap: wrap;
+    /* Allows title to stay on top if needed */
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Title */
+#haircutContainer h1 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Main Image */
+#haircutContainer img {
+    width: 100%;
+    max-width: 400px;
+      border-radius: 12px;
+        object-fit: cover;
+        display: block;
+}
+
+/* Labels */
+#haircutContainer p {
+    font-size: 1.1rem;
+        margin-bottom: 12px;
+        color: #555;
+        line-height: 1.6;
+}
+
+#haircutContainer p b {
+    color: #000;
+    font-weight: 600;
+}
+
+/* Responsive: Stack vertically on small screens */
+@media (max-width: 768px) {
+    #haircutContainer {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .haircut-image,
+    .haircut-info {
+        width: 100%;
+    }
+}
+/* Tags styling (Pinterest style badges) */
+#haircutContainer .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+#haircutContainer .tag {
+    background: #f2f2f2;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+.details-actions {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.btn {
+    margin-left: 30px;
+    padding: 10px 18px;
+   
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn i{
+    font-size: 50px;
+}
+
+
+
+#saveBtn.saved  {
+     border-color: rgba(223, 74, 33, 0.986);
+
+    }
+
+.share-options {
+    width: 100px;
+    display: none;
+    margin-top: 10px;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.share-options.open {
+    display: flex;
+}
+
+.share-options button {
+    padding: 8px;
+    border: 1px solid #444;
+    background: #111;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #fff;
+}
+/* Container for the edit mode */
+.comment-content div[id^="text-container-"] {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* The Textarea itself */
+.edit-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    resize: vertical; /* Allows user to pull it down but not wide */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fafafa;
+    outline: none;
+}
+
+.edit-textarea:focus {
+    border-color: #3498db; /* Match your primary theme color */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    background-color: #fff;
+}
+
+/* Edit Action Buttons Wrapper */
+.edit-mode-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+/* Save and Cancel Buttons */
+.save-edit-btn, .cancel-edit-btn {
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.save-edit-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.save-edit-btn:hover {
+    background-color: #219150;
+    transform: translateY(-1px);
+}
+
+.cancel-edit-btn {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.cancel-edit-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* Saved/Liked Heart State */
+#saveBtn.saved i {
+    color: #e74c3c;
+    animation: heartBeat 0.3s ease-in-out;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+
+
+
+.comment-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.share-options {
+    position: absolute;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 8px;
+    z-index: 100;
+}
+
+/* Container for the buttons */
+.comment-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Base button styles */
+.edit-btn,
+.delete-btn {
+    border: none;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Edit Button - Neutral/Gray */
+.edit-btn {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.edit-btn:hover {
+    background-color: #e2e2e2;
+    transform: translateY(-1px);
+}
+
+/* Delete Button - Red/Action */
+.delete-btn {
+    background-color: #ffe5e5;
+    color: #d93025;
+}
+
+.delete-btn:hover {
+    background-color: #ffcfcf;
+    color: #b31412;
+    transform: translateY(-1px);
+}
+
+/* Active/Pressed state */
+.edit-btn:active,
+.delete-btn:active {
+    transform: translateY(0);
+}
+
+/* Ensure avatars and text alignment look good in the comment-item */
+.comment-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.related-card {
+    cursor: pointer;
+    background: #4e4d4d;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.related-card:hover {
+    transform: translateY(-5px);
+}
+
+.related-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.related-card h4 {
+    color: #ccc;
+    margin: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.related-card p {
+    margin: 0 8px 8px;
+    font-size: 12px;
+    color: #fff3f3;
+}
+.comment-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.comment-time {
+    margin-left: 5px;
+    font-size: 0.8rem;
+    color: #888;
+    font-weight: 400;
+}
+
+/* Adjust mobile view so name and time don't overlap */
+@media (max-width: 480px) {
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .comment-time {
+        margin-top: 2px;
+    }
+}
+
+.like-counter {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+/* =================== MODERN PAGE LOADER =================== */
+/* =================== MODERN PAGE LOADER =================== */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.loader-content {
+    text-align: center;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* The Spinner */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: conic-gradient(#0000 10%, #ffffff);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 6px), #000 0);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 6px), #000 0);
+    animation: spin 0.8s infinite linear;
+    margin: 0 auto 20px;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+/* Optional: Alternative spinner with gradient colors */
+.spinner.gradient {
+    background: conic-gradient(
+        #0000 10%, 
+        #ff4d6d 30%, 
+        #ff758c 50%, 
+        #ff4d6d 70%, 
+        #0000 90%
+    );
+}
+
+.loader-text {
+    color: #ffffff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-top: 20px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.loader-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+    animation: fadeInOut 3s ease-in-out infinite;
+}
+
+/* Animation */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Class to hide loader via JS */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* =================== MODERN SKELETON LOADERS =================== */
+.skeleton-details {
+    width: 100%;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.skeleton-title {
+    height: 40px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-image {
+    height: 400px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.skeleton-action-btn {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-like {
+    width: 100px;
+    height: 36px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 20px;
+    margin-top: 7px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-line {
+    height: 20px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    width: 60%;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-line:nth-child(2) { width: 70%; }
+.skeleton-line:nth-child(3) { width: 50%; }
+
+.skeleton-tags {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.skeleton-tag {
+    width: 70px;
+    height: 32px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Related Skeleton */
+.skeleton-related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.skeleton-related-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.skeleton-related-card:hover {
+    transform: translateY(-4px);
+}
+
+.skeleton-related-img {
+    height: 160px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-related-info {
+    padding: 16px;
+}
+
+.skeleton-related-title {
+    height: 22px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-related-meta {
+    height: 16px;
+    width: 60%;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Comments Skeleton */
+.skeleton-comments {
+    margin-top: 24px;
+}
+
+.skeleton-comment {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.skeleton-comment:hover {
+    transform: translateX(4px);
+}
+
+.skeleton-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-comment-content {
+    flex: 1;
+}
+
+.skeleton-comment-header {
+    height: 18px;
+    width: 40%;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-comment-text {
+    height: 16px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-comment-text.short {
+    width: 70%;
+}
+
+.skeleton-section-title {
+    height: 32px;
+    width: 220px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.08) 30%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.08) 70%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    background-size: 400% 100%;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shimmer Animation */
+.shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* =================== ERROR STATE =================== */
+.error-state {
+    text-align: center;
+    padding: 60px 20px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.error-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+    animation: spin 3s linear infinite;
+    filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.3));
+}
+
+.error-state h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.error-state p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.retry-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 1px;
+}
+
+.retry-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.retry-btn:active {
+    transform: translateY(0);
+}
+
+/* Loading states */
+.loading-comments {
+    text-align: center;
+    padding: 40px 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.comments-error {
+    text-align: center;
+    padding: 40px 20px;
+    color: #ff4d6d;
+    font-size: 16px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.no-comments {
+    text-align: center;
+    padding: 40px 20px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    font-size: 16px;
+    animation: fadeIn 0.5s ease-out;
+}
+/* Lightbox / Zoom Styles */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+.lightbox-overlay.active { display: flex; }
+.lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+.lightbox-overlay.active img { transform: scale(1); }
+.haircut-image img { cursor: zoom-in; }

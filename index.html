@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HairStyleHub | Find Your Perfect Haircut</title>
+
+        <link rel="icon" type="image/png" href="../asets/Logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="./details/hairdetail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/Z1srPo+0CyxXl5u5rCT+XcYDLqSwNdIhQy04G1l1kXgUuXnKwOddx+3aCl3OgR0M2AQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />     
+</head>
+<body>
+<nav>
+    <h1>HairStyleHub</h1>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+        <li><a href="./home/home.html">Home</a></li>
+        <li><a href="./categories/categories.html">Categories</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="https://hairstylehub-bolg-1.netlify.app/">our blogs for hairstyles</a></li>
+         <div class="nav-auth-container">
+        <button id="googleLoginBtn" class="login-btn" onclick="googleLogin()">
+            Login with Google
+        </button>
+
+        <div class="user-avatar" style="display: none;"></div>
+        <h4 class="user-name" style="display: none;"></h4>
+    </div>        
+                
+    </ul>
+</nav>
+<div class="hero">
+    <div class="hero-content">
+        <h1>FIND YOUR PERFECT HAIRCUT</h1>
+        <p>Exploring trending hairstyles<p class="sub-content">curated for your style</p></p>
+        
+        <a  href="./home/home.html" class="hero-btn">Explore</a>
+        
+    </div>
+</div>
+
+<section class="trending-section">
+    <h2 class="page-title">Trending <span>Styles 2025</span></h2>
+    <div class="card-container">
+        <div class="tilt-card" data-tilt>
+            <div class="card-image"
+                style="background-image: url('https://i.pinimg.com/736x/33/24/d1/3324d16bff928d8b93afd8421d4e58c6.jpg');">
+            </div>
+            <div class="card-content">
+                <h3>Textured Quiff</h3>
+                <p>Perfect for round and oval faces. Adds height and volume.</p>
+                
+            </div>
+        </div>
+
+        <div class="tilt-card" data-tilt>
+            <div class="card-image"
+                style="background-image: url('https://i.pinimg.com/736x/af/20/1a/af201a228c0bb81754aab1f4fe6a21ed.jpg');">
+            </div>
+            <div class="card-content">
+                <h3>Low Taper Fade</h3>
+                <p>A clean, sharp look that works for professional settings.</p>
+            </div>
+        </div>
+
+        <div class="tilt-card" data-tilt>
+            <div class="card-image"
+                style="background-image: url('https://i.pinimg.com/736x/e4/db/fb/e4dbfb84b89571aa0932563086cb872a.jpg');">
+            </div>
+            <div class="card-content">
+                <h3>Classic Buzz</h3>
+                <p>Minimal maintenance, maximum impact for square faces.</p>
+            </div>
+        </div>
+        <div class="tilt-card" data-tilt>
+            <div class="card-image"
+                style="background-image: url('https://i.pinimg.com/736x/65/cc/b0/65ccb061dd0bc5da8a0b1ad6ad7e6450.jpg');">
+            </div>
+            <div class="card-content">
+                <h3>crew</h3>
+                <p>Minimal maintenance, maximum impact for square faces.</p>
+            </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-about">
+            <h3>HairStyleHub</h3>
+            <p>Discover trending haircuts and beard styles curated for you.</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="./home/home.html">Home</a></li>
+                <li><a href="./categories/categories.html">Categories</a></li>
+                <li><a href="./about.html">About</a></li>
+            </ul>
+        </div>
+
+        
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 HairStyleHub. All rights reserved.</p>
+    </div>
+</footer>
+<script type="module" src="./js/auth.js"></script>
+<script type="module" src="./js/firebase-config.js"></script>
+<script type="module" src="./details/hairdetail.js"></script>
+<script src="./main.js"></script>
+
+</body>
+</html>

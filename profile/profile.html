@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Hairstyle Hub</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<nav>
+    <h1>HairStyleHub</h1>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+        <li><a href="../home/home.html">Home</a></li>
+        <li><a href="../categories/categories.html">Categories</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li id="authSection"></li>
+        <button id="logoutBtn">Logout</button>                
+    </ul>
+</nav>
+
+<main>
+    <div class="profile-container">
+        <section class="user-info-card" id="userInfo">
+<img src="https://www.w3schools.com/howto/img_avatar.png" id="userPhoto" alt="Profile">            <h2 id="userName">Loading...</h2>
+            <p id="userEmail"></p>
+            <button id="editProfileBtn" class="edit-profile-btn">
+                <i class="fa-solid fa-user-pen"></i> Edit Profile
+            </button>
+        </section>
+
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <h3>Edit Profile</h3>
+                <label>New Name:</label>
+                <input type="text" id="editNameInput" placeholder="Enter new name">
+                
+        <div class="form-group">
+            <label for="editPhoto">Profile Picture</label>
+            <input type="file" id="editPhotoInput" accept="image/*" class="file-input">
+            <div id="uploadStatus" style="font-size: 0.8rem; color: #666;"></div>
+              </div>
+                <div class="preview-container" style="margin-top: 15px; text-align: center;">
+        <p style="font-size: 0.8rem; color: #666;">Preview:</p>
+        <img id="imagePreview" src="#" alt="Image Preview" style="display: none; width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #ff4d6d; margin: 0 auto;">
+    </div>
+                <div class="modal-btns">
+                    <button id="saveProfileBtn" class="save-btn">Save Changes</button>
+                    <button id="closeModalBtn" class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="profile-section">
+            <h3><i class="fa-solid fa-heart"></i> Liked Styles</h3>
+            <div class="grid-container" id="likesGrid">
+                </div>
+        </section>
+
+        <div id="loader-wrapper" style="display: none;">
+            <div class="loader-content">
+                <div class="spinner"></div>
+                <p class="loader-text">Loading...</p>
+            </div>
+        </div>
+
+        <section class="profile-section">
+            <h3><i class="fa-solid fa-comment"></i> My Comments</h3>
+            <div id="commentsList" class="comments-list">
+                </div>
+        </section>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>HairStyleHub</h3>
+            <p>Discover trending haircuts and beard styles curated for you.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="../home/home.html">Home</a></li>
+                <li><a href="../categories/categories.html">Categories</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 HairStyleHub. All rights reserved.</p>
+    </div>
+</footer>
+
+    <script type="module"  src="../js/firebase-config.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+    <script src="profile.js"></script>
+    <script src="../main.js"></script>
+    <script src="../details/hairdetail.js"></script>
+</body>
+</html>
